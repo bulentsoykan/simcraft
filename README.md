@@ -760,7 +760,7 @@ rewards = interface.get_rewards()
 | Built-in resources | ✅ Rich | ✅ Basic | ✅ Rich | 
 | Statistics | ✅ Comprehensive | ❌ External | ✅ | 
 | RL Integration | ✅ Native | ❌ | ❌ | 
-| Type hints | ✅ Full | ⚠️ Partial | ❌ | 
+| Type hints | ✅ Full | ⚠️ Partial | ✅ | 
 | Language | Python | Python | Python | 
 
 **When to use SimCraft:**
