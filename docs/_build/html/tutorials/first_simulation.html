@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Your First Simulation &mdash; SimCraft 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e14a9214" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reinforcement Learning Integration" href="rl_integration.html" />
+    <link rel="prev" title="Tutorials" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#visualization">Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#all-dependencies">All Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#scheduling-events">Scheduling Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#random-numbers">Random Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#getting-started">Getting Started</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Building Your First Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-scenario">The Scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-create-the-simulation-class">Step 1: Create the Simulation Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-handle-customer-arrivals">Step 2: Handle Customer Arrivals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-handle-service-events">Step 3: Handle Service Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-add-reporting">Step 4: Add Reporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5-run-the-simulation">Step 5: Run the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complete-code">Complete Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-simulation">Running the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#experimentation">Experimentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rl_integration.html">Reinforcement Learning Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#step-1-define-the-problem">Step 1: Define the Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#step-2-implement-rlinterface">Step 2: Implement RLInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#step-3-create-the-gym-environment">Step 3: Create the Gym Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#step-4-training-loop">Step 4: Training Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#using-with-stable-baselines3">Using with Stable-Baselines3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#decision-points">Decision Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#multi-agent-rl">Multi-Agent RL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rl_integration.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#available-examples">Available Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/mm1_queue.html">M/M/1 Queue Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#queueing-theory-background">Queueing Theory Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#extending-the-example">Extending the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/manufacturing.html">Manufacturing Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#the-manufacturing-process">The Manufacturing Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#key-patterns-demonstrated">Key Patterns Demonstrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/port_terminal.html">Port Terminal Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#terminal-operations">Terminal Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#rl-integration">RL Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#key-patterns">Key Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/core.html">Core Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#simulation">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#clock">Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/resources.html">Resources Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#server">Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#queue">Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource-pool">Resource Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/statistics.html">Statistics Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#tally">Tally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#monitor">Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/activities.html">Activities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#state-machine">State Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/random.html">Random Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#randomgenerator">RandomGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#stream-management">Stream Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#alternative-generators">Alternative Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/optimization.html">Optimization Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#optimization-interface">Optimization Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#reinforcement-learning-interface">Reinforcement Learning Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/utils.html">Utils Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#id1">[1.0.0] - 2024-12-28</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Building Your First Simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/first_simulation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-your-first-simulation">
+<h1>Building Your First Simulation<a class="headerlink" href="#building-your-first-simulation" title="Link to this heading"></a></h1>
+<p>This tutorial walks you through building a complete discrete event simulation from scratch.</p>
+<section id="what-you-ll-learn">
+<h2>What You’ll Learn<a class="headerlink" href="#what-you-ll-learn" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Creating a <code class="docutils literal notranslate"><span class="pre">Simulation</span></code> subclass</p></li>
+<li><p>Scheduling and handling events</p></li>
+<li><p>Creating and tracking entities</p></li>
+<li><p>Using resources (servers and queues)</p></li>
+<li><p>Collecting statistics</p></li>
+<li><p>Running and analyzing results</p></li>
+</ul>
+</section>
+<section id="the-scenario">
+<h2>The Scenario<a class="headerlink" href="#the-scenario" title="Link to this heading"></a></h2>
+<p>We’ll build a simple bank simulation where:</p>
+<ul class="simple">
+<li><p>Customers arrive randomly</p></li>
+<li><p>They wait in a queue if all tellers are busy</p></li>
+<li><p>They get served by a teller</p></li>
+<li><p>We track wait times and teller utilization</p></li>
+</ul>
+</section>
+<section id="step-1-create-the-simulation-class">
+<h2>Step 1: Create the Simulation Class<a class="headerlink" href="#step-1-create-the-simulation-class" title="Link to this heading"></a></h2>
+<p>Start by creating a new file <code class="docutils literal notranslate"><span class="pre">bank_simulation.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simcraft</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BankSimulation</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple bank with customers and tellers.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_tellers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">arrival_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span> <span class="o">=</span> <span class="n">arrival_rate</span>
+
+        <span class="c1"># Create a server with multiple tellers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="n">num_tellers</span><span class="p">)</span>
+
+        <span class="c1"># Statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Tally</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when simulation starts.&quot;&quot;&quot;</span>
+        <span class="c1"># Schedule first customer arrival</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">customer_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># Set up callbacks for server events</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_service_start</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">on_departure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_service_complete</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-handle-customer-arrivals">
+<h2>Step 2: Handle Customer Arrivals<a class="headerlink" href="#step-2-handle-customer-arrivals" title="Link to this heading"></a></h2>
+<p>Add the arrival event handler:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">customer_arrival</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle a customer arriving at the bank.&quot;&quot;&quot;</span>
+        <span class="c1"># Create a new customer entity</span>
+        <span class="n">customer</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">TimedEntity</span><span class="p">()</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+
+        <span class="c1"># Customer joins the teller queue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+
+        <span class="c1"># Schedule next customer arrival</span>
+        <span class="n">inter_arrival</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">customer_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">inter_arrival</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-handle-service-events">
+<h2>Step 3: Handle Service Events<a class="headerlink" href="#step-3-handle-service-events" title="Link to this heading"></a></h2>
+<p>Add the service event handlers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when a customer starts being served.&quot;&quot;&quot;</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">waiting_time</span><span class="p">)</span>
+
+        <span class="c1"># Schedule service completion</span>
+        <span class="n">service_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">service_complete</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">service_time</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">customer</span><span class="p">,))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">service_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle service completion.&quot;&quot;&quot;</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_exit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">depart</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_service_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called after customer departs.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-add-reporting">
+<h2>Step 4: Add Reporting<a class="headerlink" href="#step-4-add-reporting" title="Link to this heading"></a></h2>
+<p>Add a method to report results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print simulation results.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Bank Simulation Results ===&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Customers served: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Teller utilization: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">utilization</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average wait time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wait time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">max</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wait time std dev: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">std</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-run-the-simulation">
+<h2>Step 5: Run the Simulation<a class="headerlink" href="#step-5-run-the-simulation" title="Link to this heading"></a></h2>
+<p>Add a main block to run the simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Create simulation with 2 tellers, 1.5 customers/minute</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">BankSimulation</span><span class="p">(</span><span class="n">num_tellers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">arrival_rate</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+    <span class="c1"># Run for 480 minutes (8 hours)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">480</span><span class="p">)</span>
+
+    <span class="c1"># Print results</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-code">
+<h2>Complete Code<a class="headerlink" href="#complete-code" title="Link to this heading"></a></h2>
+<p>Here’s the complete simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simcraft</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BankSimulation</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple bank with customers and tellers.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_tellers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">arrival_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span> <span class="o">=</span> <span class="n">arrival_rate</span>
+
+        <span class="c1"># Create a server with multiple tellers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="n">num_tellers</span><span class="p">)</span>
+
+        <span class="c1"># Statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Tally</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when simulation starts.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">customer_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_service_start</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">on_departure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_service_complete</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">customer_arrival</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle a customer arriving at the bank.&quot;&quot;&quot;</span>
+        <span class="n">customer</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">TimedEntity</span><span class="p">()</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+
+        <span class="n">inter_arrival</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">customer_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">inter_arrival</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when a customer starts being served.&quot;&quot;&quot;</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">waiting_time</span><span class="p">)</span>
+
+        <span class="n">service_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">service_complete</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">service_time</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">customer</span><span class="p">,))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">service_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle service completion.&quot;&quot;&quot;</span>
+        <span class="n">customer</span><span class="o">.</span><span class="n">record_exit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">depart</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_service_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called after customer departs.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print simulation results.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Bank Simulation Results ===&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Customers served: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">customers_served</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Teller utilization: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tellers</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">utilization</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average wait time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max wait time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">max</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">BankSimulation</span><span class="p">(</span><span class="n">num_tellers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">arrival_rate</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">480</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-simulation">
+<h2>Running the Simulation<a class="headerlink" href="#running-the-simulation" title="Link to this heading"></a></h2>
+<p>Save the file and run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bank_simulation.py
+</pre></div>
+</div>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">===</span> <span class="n">Bank</span> <span class="n">Simulation</span> <span class="n">Results</span> <span class="o">===</span>
+<span class="n">Simulation</span> <span class="n">time</span><span class="p">:</span> <span class="mf">480.0</span>
+<span class="n">Customers</span> <span class="n">served</span><span class="p">:</span> <span class="mi">712</span>
+<span class="n">Teller</span> <span class="n">utilization</span><span class="p">:</span> <span class="mf">74.2</span><span class="o">%</span>
+<span class="n">Average</span> <span class="n">wait</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.84</span>
+<span class="n">Max</span> <span class="n">wait</span> <span class="n">time</span><span class="p">:</span> <span class="mf">12.37</span>
+</pre></div>
+</div>
+</section>
+<section id="experimentation">
+<h2>Experimentation<a class="headerlink" href="#experimentation" title="Link to this heading"></a></h2>
+<p>Try modifying the simulation:</p>
+<ol class="arabic simple">
+<li><p><strong>Change the number of tellers</strong>: How does utilization change with 1, 2, or 3 tellers?</p></li>
+<li><p><strong>Vary arrival rate</strong>: What happens when customers arrive faster?</p></li>
+<li><p><strong>Add warmup</strong>: Use <code class="docutils literal notranslate"><span class="pre">sim.warmup(60)</span></code> before <code class="docutils literal notranslate"><span class="pre">sim.run()</span></code> to exclude startup transients</p></li>
+</ol>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>See the <a class="reference internal" href="../examples/mm1_queue.html"><span class="doc std std-doc">M/M/1 Queue Example</span></a> for theoretical validation</p></li>
+<li><p>Learn about <a class="reference internal" href="rl_integration.html"><span class="doc std std-doc">RL Integration</span></a> for optimization</p></li>
+<li><p>Explore more <a class="reference internal" href="../examples/index.html"><span class="doc std std-doc">Examples</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rl_integration.html" class="btn btn-neutral float-right" title="Reinforcement Learning Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Bulent Soykan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

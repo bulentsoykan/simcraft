@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manufacturing Example &mdash; SimCraft 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e14a9214" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Port Terminal Example" href="port_terminal.html" />
+    <link rel="prev" title="M/M/1 Queue Example" href="mm1_queue.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#visualization">Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#all-dependencies">All Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#scheduling-events">Scheduling Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#random-numbers">Random Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first_simulation.html">Building Your First Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#the-scenario">The Scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-1-create-the-simulation-class">Step 1: Create the Simulation Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-2-handle-customer-arrivals">Step 2: Handle Customer Arrivals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-3-handle-service-events">Step 3: Handle Service Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-4-add-reporting">Step 4: Add Reporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-5-run-the-simulation">Step 5: Run the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#complete-code">Complete Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#running-the-simulation">Running the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#experimentation">Experimentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/rl_integration.html">Reinforcement Learning Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-1-define-the-problem">Step 1: Define the Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-2-implement-rlinterface">Step 2: Implement RLInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-3-create-the-gym-environment">Step 3: Create the Gym Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-4-training-loop">Step 4: Training Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#using-with-stable-baselines3">Using with Stable-Baselines3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#decision-points">Decision Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#multi-agent-rl">Multi-Agent RL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#available-examples">Available Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mm1_queue.html">M/M/1 Queue Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#queueing-theory-background">Queueing Theory Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#extending-the-example">Extending the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mm1_queue.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Manufacturing Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-manufacturing-process">The Manufacturing Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-patterns-demonstrated">Key Patterns Demonstrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="port_terminal.html">Port Terminal Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#terminal-operations">Terminal Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#rl-integration">RL Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#key-patterns">Key Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/core.html">Core Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#simulation">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#clock">Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/resources.html">Resources Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#server">Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#queue">Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource-pool">Resource Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/statistics.html">Statistics Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#tally">Tally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#monitor">Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/activities.html">Activities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#state-machine">State Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/random.html">Random Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#randomgenerator">RandomGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#stream-management">Stream Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#alternative-generators">Alternative Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/optimization.html">Optimization Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#optimization-interface">Optimization Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#reinforcement-learning-interface">Reinforcement Learning Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/utils.html">Utils Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#id1">[1.0.0] - 2024-12-28</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Examples</a></li>
+      <li class="breadcrumb-item active">Manufacturing Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/manufacturing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="manufacturing-example">
+<h1>Manufacturing Example<a class="headerlink" href="#manufacturing-example" title="Link to this heading"></a></h1>
+<p>A semiconductor fabrication simulation with multi-step routing and quality constraints.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This example models a semiconductor fab inspired by the Winter Simulation Conference (WSC) 2023 challenge. It demonstrates:</p>
+<ul class="simple">
+<li><p>Multi-step production routes</p></li>
+<li><p>Quality Time (QT) constraints between steps</p></li>
+<li><p>Lot-based batch processing</p></li>
+<li><p>Multiple workstations with tool capacity</p></li>
+<li><p>Work-in-progress (WIP) monitoring</p></li>
+<li><p>Constraint breach detection</p></li>
+</ul>
+</section>
+<section id="the-manufacturing-process">
+<h2>The Manufacturing Process<a class="headerlink" href="#the-manufacturing-process" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Lot Release → Step 1 → Step 2 → ... → Step N → Completion
+                 │         │
+                 └── QT ───┘  (Quality Time constraint)
+</pre></div>
+</div>
+<p><strong>Key concepts:</strong></p>
+<ul class="simple">
+<li><p><strong>Lot</strong>: A batch of wafers moving through the fab</p></li>
+<li><p><strong>Step</strong>: A processing operation at a workstation</p></li>
+<li><p><strong>Workstation</strong>: A group of parallel tools performing the same operation</p></li>
+<li><p><strong>Quality Time (QT)</strong>: Maximum allowed time between certain steps</p></li>
+</ul>
+</section>
+<section id="code-walkthrough">
+<h2>Code Walkthrough<a class="headerlink" href="#code-walkthrough" title="Link to this heading"></a></h2>
+<section id="domain-entities">
+<h3>Domain Entities<a class="headerlink" href="#domain-entities" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProductType</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a product&#39;s manufacturing route.&quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">steps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Step</span><span class="p">]</span>
+    <span class="n">qt_constraints</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QTConstraint</span><span class="p">]</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Lot</span><span class="p">(</span><span class="n">TimedEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A lot (batch) moving through the fab.&quot;&quot;&quot;</span>
+    <span class="n">lot_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">product_type</span><span class="p">:</span> <span class="n">ProductType</span>
+    <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># wafers per lot</span>
+    <span class="n">current_step</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">qt_breach</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="workstation-with-tools">
+<h3>Workstation with Tools<a class="headerlink" href="#workstation-with-tools" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Workstation</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A workstation with multiple parallel tools.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num_tools</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">process_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+            <span class="n">sim</span><span class="o">=</span><span class="n">sim</span><span class="p">,</span>
+            <span class="n">capacity</span><span class="o">=</span><span class="n">num_tools</span><span class="p">,</span>
+            <span class="n">service_time</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">sim</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">process_time</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wip</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_WIP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="quality-time-constraints">
+<h3>Quality Time Constraints<a class="headerlink" href="#quality-time-constraints" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QTConstraint</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Quality time constraint between steps.&quot;&quot;&quot;</span>
+    <span class="n">from_step</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">to_step</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">max_time</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_qt_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lot</span><span class="p">:</span> <span class="n">Lot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if lot has violated any QT constraints.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">qt</span> <span class="ow">in</span> <span class="n">lot</span><span class="o">.</span><span class="n">product_type</span><span class="o">.</span><span class="n">qt_constraints</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lot</span><span class="o">.</span><span class="n">current_step</span> <span class="o">==</span> <span class="n">qt</span><span class="o">.</span><span class="n">to_step</span><span class="p">:</span>
+            <span class="n">elapsed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">lot</span><span class="o">.</span><span class="n">step_times</span><span class="p">[</span><span class="n">qt</span><span class="o">.</span><span class="n">from_step</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">elapsed</span> <span class="o">&gt;</span> <span class="n">qt</span><span class="o">.</span><span class="n">max_time</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Breach!</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="lot-flow">
+<h3>Lot Flow<a class="headerlink" href="#lot-flow" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start lot releases.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">release_lot</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">release_lot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Release a new lot into the fab.&quot;&quot;&quot;</span>
+    <span class="n">lot</span> <span class="o">=</span> <span class="n">Lot</span><span class="p">(</span>
+        <span class="n">lot_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;LOT-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lots_released</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">product_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">product_types</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">lot</span><span class="o">.</span><span class="n">record_entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lots_released</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Start processing at first workstation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">process_step</span><span class="p">(</span><span class="n">lot</span><span class="p">)</span>
+
+    <span class="c1"># Schedule next release</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">release_lot</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">release_interval</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lot</span><span class="p">:</span> <span class="n">Lot</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process lot at current step.&quot;&quot;&quot;</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">lot</span><span class="o">.</span><span class="n">product_type</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">lot</span><span class="o">.</span><span class="n">current_step</span><span class="p">]</span>
+    <span class="n">workstation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workstations</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">workstation</span><span class="p">]</span>
+
+    <span class="c1"># Track WIP</span>
+    <span class="n">workstation</span><span class="o">.</span><span class="n">wip</span><span class="o">.</span><span class="n">observe_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Enter workstation queue</span>
+    <span class="n">workstation</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">lot</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_step_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lot</span><span class="p">:</span> <span class="n">Lot</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle step completion.&quot;&quot;&quot;</span>
+    <span class="c1"># Check QT constraint</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_qt_constraint</span><span class="p">(</span><span class="n">lot</span><span class="p">):</span>
+        <span class="n">lot</span><span class="o">.</span><span class="n">qt_breach</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">breaches</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Update WIP</span>
+    <span class="n">workstation</span><span class="o">.</span><span class="n">wip</span><span class="o">.</span><span class="n">observe_change</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Move to next step or complete</span>
+    <span class="n">lot</span><span class="o">.</span><span class="n">current_step</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">lot</span><span class="o">.</span><span class="n">current_step</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lot</span><span class="o">.</span><span class="n">product_type</span><span class="o">.</span><span class="n">steps</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_step</span><span class="p">(</span><span class="n">lot</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">complete_lot</span><span class="p">(</span><span class="n">lot</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-example">
+<h2>Running the Example<a class="headerlink" href="#running-the-example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.examples.manufacturing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManufacturingSimulation</span>
+
+<span class="c1"># Create simulation</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">ManufacturingSimulation</span><span class="p">(</span>
+    <span class="n">num_workstations</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">tools_per_workstation</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">release_interval</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Run for one week (168 hours)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">168</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># in minutes</span>
+
+<span class="c1"># Print results</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-output">
+<h2>Sample Output<a class="headerlink" href="#sample-output" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Manufacturing</span> <span class="n">Simulation</span> <span class="n">Results</span>
+<span class="o">============================================================</span>
+
+<span class="n">Production</span> <span class="n">Metrics</span><span class="p">:</span>
+  <span class="n">Lots</span> <span class="n">released</span><span class="p">:</span> <span class="mi">1008</span>
+  <span class="n">Lots</span> <span class="n">completed</span><span class="p">:</span> <span class="mi">987</span>
+  <span class="n">QT</span> <span class="n">breaches</span><span class="p">:</span> <span class="mi">23</span> <span class="p">(</span><span class="mf">2.3</span><span class="o">%</span><span class="p">)</span>
+
+<span class="n">Cycle</span> <span class="n">Time</span><span class="p">:</span>
+  <span class="n">Average</span><span class="p">:</span> <span class="mf">142.3</span> <span class="n">minutes</span>
+  <span class="n">Min</span><span class="p">:</span> <span class="mf">98.7</span> <span class="n">minutes</span>
+  <span class="n">Max</span><span class="p">:</span> <span class="mf">312.5</span> <span class="n">minutes</span>
+
+<span class="n">Workstation</span> <span class="n">Utilization</span><span class="p">:</span>
+  <span class="n">WS</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="mf">78.2</span><span class="o">%</span>
+  <span class="n">WS</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span> <span class="mf">82.5</span><span class="o">%</span>
+  <span class="n">WS</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span> <span class="mf">71.3</span><span class="o">%</span>
+  <span class="n">WS</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span> <span class="mf">85.1</span><span class="o">%</span>
+  <span class="n">WS</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span> <span class="mf">69.8</span><span class="o">%</span>
+
+<span class="n">Bottleneck</span><span class="p">:</span> <span class="n">WS</span><span class="o">-</span><span class="mi">4</span> <span class="p">(</span><span class="n">highest</span> <span class="n">utilization</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="key-patterns-demonstrated">
+<h2>Key Patterns Demonstrated<a class="headerlink" href="#key-patterns-demonstrated" title="Link to this heading"></a></h2>
+<section id="multi-step-routing">
+<h3>Multi-Step Routing<a class="headerlink" href="#multi-step-routing" title="Link to this heading"></a></h3>
+<p>Lots follow a predefined sequence of steps, each at a specific workstation.</p>
+</section>
+<section id="time-constraints">
+<h3>Time Constraints<a class="headerlink" href="#time-constraints" title="Link to this heading"></a></h3>
+<p>Quality Time (QT) constraints enforce maximum elapsed time between steps. Violations are tracked as breaches.</p>
+</section>
+<section id="parallel-resources">
+<h3>Parallel Resources<a class="headerlink" href="#parallel-resources" title="Link to this heading"></a></h3>
+<p>Each workstation has multiple tools (parallel servers) that can process lots simultaneously.</p>
+</section>
+<section id="wip-tracking">
+<h3>WIP Tracking<a class="headerlink" href="#wip-tracking" title="Link to this heading"></a></h3>
+<p>Work-in-progress is tracked at each workstation using TimeSeries statistics.</p>
+</section>
+</section>
+<section id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Link to this heading"></a></h2>
+<section id="priority-dispatching">
+<h3>Priority Dispatching<a class="headerlink" href="#priority-dispatching" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prioritize lots close to QT breach</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_priority</span><span class="p">(</span><span class="n">lot</span><span class="p">:</span> <span class="n">Lot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">remaining_qt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_remaining_qt</span><span class="p">(</span><span class="n">lot</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">remaining_qt</span>  <span class="c1"># Lower remaining time = higher priority</span>
+</pre></div>
+</div>
+</section>
+<section id="machine-breakdowns">
+<h3>Machine Breakdowns<a class="headerlink" href="#machine-breakdowns" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">schedule_breakdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workstation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schedule random machine breakdown.&quot;&quot;&quot;</span>
+    <span class="n">mtbf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Mean time between failures</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">machine_failure</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="n">mtbf</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">workstation</span><span class="p">,)</span>
+    <span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">machine_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workstation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle machine failure.&quot;&quot;&quot;</span>
+    <span class="n">workstation</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">set_down</span><span class="p">()</span>
+    <span class="n">repair_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">machine_repair</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="n">repair_time</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">workstation</span><span class="p">,)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multiple-product-types">
+<h3>Multiple Product Types<a class="headerlink" href="#multiple-product-types" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">product_a</span> <span class="o">=</span> <span class="n">ProductType</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ProductA&quot;</span><span class="p">,</span>
+    <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-1&quot;</span><span class="p">),</span> <span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-2&quot;</span><span class="p">),</span> <span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-3&quot;</span><span class="p">)],</span>
+    <span class="n">qt_constraints</span><span class="o">=</span><span class="p">[</span><span class="n">QTConstraint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mi">60</span><span class="p">)]</span>
+<span class="p">)</span>
+
+<span class="n">product_b</span> <span class="o">=</span> <span class="n">ProductType</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ProductB&quot;</span><span class="p">,</span>
+    <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-1&quot;</span><span class="p">),</span> <span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-3&quot;</span><span class="p">),</span> <span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-4&quot;</span><span class="p">),</span> <span class="n">Step</span><span class="p">(</span><span class="s2">&quot;WS-5&quot;</span><span class="p">)],</span>
+    <span class="n">qt_constraints</span><span class="o">=</span><span class="p">[</span><span class="n">QTConstraint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mi">90</span><span class="p">)]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading"></a></h2>
+<p>The complete source code is in <code class="docutils literal notranslate"><span class="pre">simcraft/examples/manufacturing.py</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mm1_queue.html" class="btn btn-neutral float-left" title="M/M/1 Queue Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="port_terminal.html" class="btn btn-neutral float-right" title="Port Terminal Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Bulent Soykan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

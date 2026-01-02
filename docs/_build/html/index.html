@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimCraft Documentation &mdash; SimCraft 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e14a9214" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            SimCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#visualization">Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#all-dependencies">All Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#scheduling-events">Scheduling Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#random-numbers">Random Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first_simulation.html">Building Your First Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#the-scenario">The Scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#step-1-create-the-simulation-class">Step 1: Create the Simulation Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#step-2-handle-customer-arrivals">Step 2: Handle Customer Arrivals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#step-3-handle-service-events">Step 3: Handle Service Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#step-4-add-reporting">Step 4: Add Reporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#step-5-run-the-simulation">Step 5: Run the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#complete-code">Complete Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#running-the-simulation">Running the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#experimentation">Experimentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/first_simulation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/rl_integration.html">Reinforcement Learning Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#step-1-define-the-problem">Step 1: Define the Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#step-2-implement-rlinterface">Step 2: Implement RLInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#step-3-create-the-gym-environment">Step 3: Create the Gym Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#step-4-training-loop">Step 4: Training Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#using-with-stable-baselines3">Using with Stable-Baselines3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#decision-points">Decision Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#multi-agent-rl">Multi-Agent RL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/rl_integration.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#available-examples">Available Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/mm1_queue.html">M/M/1 Queue Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#queueing-theory-background">Queueing Theory Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#extending-the-example">Extending the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/mm1_queue.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/manufacturing.html">Manufacturing Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#the-manufacturing-process">The Manufacturing Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#key-patterns-demonstrated">Key Patterns Demonstrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/manufacturing.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/port_terminal.html">Port Terminal Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#terminal-operations">Terminal Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#rl-integration">RL Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#key-patterns">Key Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/port_terminal.html#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html">Core Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core.html#simulation">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core.html#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/core.html#clock">Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/resources.html">Resources Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/resources.html#server">Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/resources.html#queue">Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/resources.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/resources.html#resource-pool">Resource Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/statistics.html">Statistics Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/statistics.html#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/statistics.html#tally">Tally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/statistics.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/statistics.html#monitor">Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/activities.html">Activities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/activities.html#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/activities.html#state-machine">State Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/random.html">Random Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/random.html#randomgenerator">RandomGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/random.html#stream-management">Stream Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/random.html#alternative-generators">Alternative Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/optimization.html">Optimization Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/optimization.html#optimization-interface">Optimization Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/optimization.html#reinforcement-learning-interface">Reinforcement Learning Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/utils.html">Utils Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">[1.0.0] - 2024-12-28</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">SimCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SimCraft Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simcraft-documentation">
+<h1>SimCraft Documentation<a class="headerlink" href="#simcraft-documentation" title="Link to this heading"></a></h1>
+<p><strong>SimCraft</strong> is a discrete event simulation (DES) framework for Python, designed for academic research, industrial applications, and integration with optimization algorithms including reinforcement learning.</p>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Event-Driven Architecture</strong>: O(log n) event scheduling with priority support</p></li>
+<li><p><strong>Hierarchical Composition</strong>: Build complex models from reusable components</p></li>
+<li><p><strong>Rich Resource Management</strong>: Servers, queues, resources, and resource pools</p></li>
+<li><p><strong>Comprehensive Statistics</strong>: Counters, tallies, time-series, and monitors</p></li>
+<li><p><strong>20+ Random Distributions</strong>: Reproducible random number generation</p></li>
+<li><p><strong>Optimization Integration</strong>: Native support for simulation-optimization and RL</p></li>
+<li><p><strong>Full Type Hints</strong>: Complete type annotations for IDE support</p></li>
+</ul>
+</section>
+<section id="quick-example">
+<h2>Quick Example<a class="headerlink" href="#quick-example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simcraft</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorld</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">say_hello</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello at time </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">say_hello</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">HelloWorld</span><span class="p">()</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#core-concepts">Core Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#available-examples">Available Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="project-information">
+<h2>Project Information<a class="headerlink" href="#project-information" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h2>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Bulent Soykan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

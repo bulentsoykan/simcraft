@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reinforcement Learning Integration &mdash; SimCraft 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e14a9214" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/index.html" />
+    <link rel="prev" title="Building Your First Simulation" href="first_simulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#visualization">Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#all-dependencies">All Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#scheduling-events">Scheduling Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#random-numbers">Random Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#getting-started">Getting Started</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="first_simulation.html">Building Your First Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#the-scenario">The Scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#step-1-create-the-simulation-class">Step 1: Create the Simulation Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#step-2-handle-customer-arrivals">Step 2: Handle Customer Arrivals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#step-3-handle-service-events">Step 3: Handle Service Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#step-4-add-reporting">Step 4: Add Reporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#step-5-run-the-simulation">Step 5: Run the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#complete-code">Complete Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#running-the-simulation">Running the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#experimentation">Experimentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="first_simulation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Reinforcement Learning Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-define-the-problem">Step 1: Define the Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-implement-rlinterface">Step 2: Implement RLInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-create-the-gym-environment">Step 3: Create the Gym Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-training-loop">Step 4: Training Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-with-stable-baselines3">Using with Stable-Baselines3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decision-points">Decision Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-agent-rl">Multi-Agent RL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#available-examples">Available Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/mm1_queue.html">M/M/1 Queue Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#queueing-theory-background">Queueing Theory Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#extending-the-example">Extending the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/mm1_queue.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/manufacturing.html">Manufacturing Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#the-manufacturing-process">The Manufacturing Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#key-patterns-demonstrated">Key Patterns Demonstrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/manufacturing.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/port_terminal.html">Port Terminal Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#terminal-operations">Terminal Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#rl-integration">RL Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#key-patterns">Key Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/port_terminal.html#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/core.html">Core Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#simulation">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#clock">Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/resources.html">Resources Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#server">Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#queue">Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource-pool">Resource Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/statistics.html">Statistics Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#tally">Tally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#monitor">Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/activities.html">Activities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#state-machine">State Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/random.html">Random Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#randomgenerator">RandomGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#stream-management">Stream Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#alternative-generators">Alternative Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/optimization.html">Optimization Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#optimization-interface">Optimization Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#reinforcement-learning-interface">Reinforcement Learning Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/utils.html">Utils Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#id1">[1.0.0] - 2024-12-28</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Reinforcement Learning Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/rl_integration.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reinforcement-learning-integration">
+<h1>Reinforcement Learning Integration<a class="headerlink" href="#reinforcement-learning-integration" title="Link to this heading"></a></h1>
+<p>This tutorial shows how to integrate SimCraft simulations with reinforcement learning frameworks.</p>
+<section id="what-you-ll-learn">
+<h2>What You’ll Learn<a class="headerlink" href="#what-you-ll-learn" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Implementing the <code class="docutils literal notranslate"><span class="pre">RLInterface</span></code> for your simulation</p></li>
+<li><p>Defining state and action spaces</p></li>
+<li><p>Creating a Gym-compatible environment</p></li>
+<li><p>Training an RL agent</p></li>
+</ul>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>SimCraft provides native RL integration through:</p>
+<ul class="simple">
+<li><p><strong>RLInterface</strong>: Abstract base class for RL-compatible simulations</p></li>
+<li><p><strong>RLEnvironment</strong>: Gym-compatible wrapper</p></li>
+<li><p><strong>ActionSpace/StateSpace</strong>: Space definitions</p></li>
+<li><p><strong>ReplayBuffer</strong>: Experience storage for off-policy learning</p></li>
+</ul>
+</section>
+<section id="step-1-define-the-problem">
+<h2>Step 1: Define the Problem<a class="headerlink" href="#step-1-define-the-problem" title="Link to this heading"></a></h2>
+<p>We’ll create an RL environment for a simple inventory control problem:</p>
+<ul class="simple">
+<li><p><strong>State</strong>: Current inventory level</p></li>
+<li><p><strong>Action</strong>: How much to order (0, 10, 20, or 30 units)</p></li>
+<li><p><strong>Reward</strong>: Revenue minus holding and ordering costs</p></li>
+</ul>
+</section>
+<section id="step-2-implement-rlinterface">
+<h2>Step 2: Implement RLInterface<a class="headerlink" href="#step-2-implement-rlinterface" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simcraft</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">RLInterface</span><span class="p">,</span> <span class="n">ActionSpace</span><span class="p">,</span> <span class="n">StateSpace</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InventoryRL</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">,</span> <span class="n">RLInterface</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inventory control simulation with RL interface.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">RLInterface</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_inventory</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">holding_cost</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ordering_cost</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stockout_cost</span> <span class="o">=</span> <span class="mf">10.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit_revenue</span> <span class="o">=</span> <span class="mf">5.0</span>
+
+        <span class="c1"># State</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daily_demand</span> <span class="o">=</span> <span class="n">simcraft</span><span class="o">.</span><span class="n">Tally</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the simulation.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">daily_cycle</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">daily_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process one day: demand arrives, costs accrue.&quot;&quot;&quot;</span>
+        <span class="c1"># Generate demand</span>
+        <span class="n">demand</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lam</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daily_demand</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">demand</span><span class="p">)</span>
+
+        <span class="c1"># Fulfill demand</span>
+        <span class="n">sold</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">-=</span> <span class="n">sold</span>
+        <span class="n">stockout</span> <span class="o">=</span> <span class="n">demand</span> <span class="o">-</span> <span class="n">sold</span>
+
+        <span class="c1"># Calculate daily reward</span>
+        <span class="n">revenue</span> <span class="o">=</span> <span class="n">sold</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_revenue</span>
+        <span class="n">holding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">holding_cost</span>
+        <span class="n">stockout_penalty</span> <span class="o">=</span> <span class="n">stockout</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">stockout_cost</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">+=</span> <span class="n">revenue</span> <span class="o">-</span> <span class="n">holding</span> <span class="o">-</span> <span class="n">stockout_penalty</span>
+
+        <span class="c1"># Schedule next day (this triggers decision point)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">daily_cycle</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># ========== RLInterface Implementation ==========</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_state_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StateSpace</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define the state space.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">StateSpace</span><span class="p">(</span>
+            <span class="n">low</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">max_inventory</span><span class="p">]),</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ActionSpace</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define the action space (discrete: order 0, 10, 20, or 30).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ActionSpace</span><span class="p">(</span>
+            <span class="n">space_type</span><span class="o">=</span><span class="s2">&quot;discrete&quot;</span><span class="p">,</span>
+            <span class="n">n</span><span class="o">=</span><span class="mi">4</span>  <span class="c1"># Actions: 0, 1, 2, 3 -&gt; order 0, 10, 20, 30</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return current state observation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply the ordering decision.&quot;&quot;&quot;</span>
+        <span class="n">order_quantity</span> <span class="o">=</span> <span class="n">action</span> <span class="o">*</span> <span class="mi">10</span>  <span class="c1"># Convert action to order amount</span>
+        <span class="n">order_cost</span> <span class="o">=</span> <span class="n">order_quantity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordering_cost</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">-=</span> <span class="n">order_cost</span>
+
+        <span class="c1"># Receive order (instant delivery for simplicity)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">+</span> <span class="n">order_quantity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_inventory</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return reward since last action.&quot;&quot;&quot;</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Reset for next period</span>
+        <span class="k">return</span> <span class="n">reward</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if episode is complete.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">now</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset_for_episode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset simulation for new episode.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># 30-day episodes</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-create-the-gym-environment">
+<h2>Step 3: Create the Gym Environment<a class="headerlink" href="#step-3-create-the-gym-environment" title="Link to this heading"></a></h2>
+<p>Wrap the simulation in a Gym-compatible environment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">RLEnvironment</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_inventory_env</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a Gym-compatible environment.&quot;&quot;&quot;</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">InventoryRL</span><span class="p">()</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">RLEnvironment</span><span class="p">(</span>
+        <span class="n">simulation</span><span class="o">=</span><span class="n">sim</span><span class="p">,</span>
+        <span class="n">max_steps</span><span class="o">=</span><span class="mi">30</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">env</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-training-loop">
+<h2>Step 4: Training Loop<a class="headerlink" href="#step-4-training-loop" title="Link to this heading"></a></h2>
+<p>Here’s a simple training loop (using a basic Q-learning approach):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_agent</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">num_episodes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.99</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train a simple Q-learning agent.&quot;&quot;&quot;</span>
+    <span class="c1"># Discretize state space into bins</span>
+    <span class="n">num_state_bins</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1"># 0, 10, 20, ..., 100</span>
+    <span class="n">num_actions</span> <span class="o">=</span> <span class="mi">4</span>
+
+    <span class="c1"># Initialize Q-table</span>
+    <span class="n">q_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_state_bins</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">))</span>
+
+    <span class="c1"># Training parameters</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">epsilon_decay</span> <span class="o">=</span> <span class="mf">0.995</span>
+    <span class="n">epsilon_min</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+    <span class="n">rewards_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_episodes</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="n">state_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Discretize</span>
+        <span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+            <span class="c1"># Epsilon-greedy action selection</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">num_actions</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">q_table</span><span class="p">[</span><span class="n">state_bin</span><span class="p">])</span>
+
+            <span class="c1"># Take action</span>
+            <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+            <span class="n">next_state_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">next_state</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+            <span class="c1"># Q-learning update</span>
+            <span class="n">best_next</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">q_table</span><span class="p">[</span><span class="n">next_state_bin</span><span class="p">])</span>
+            <span class="n">q_table</span><span class="p">[</span><span class="n">state_bin</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="n">reward</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">best_next</span> <span class="o">-</span> <span class="n">q_table</span><span class="p">[</span><span class="n">state_bin</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="n">state_bin</span> <span class="o">=</span> <span class="n">next_state_bin</span>
+            <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+
+        <span class="n">rewards_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_reward</span><span class="p">)</span>
+        <span class="n">epsilon</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">epsilon_min</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">epsilon_decay</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">episode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">avg_reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rewards_history</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Episode </span><span class="si">{</span><span class="n">episode</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">, Avg Reward: </span><span class="si">{</span><span class="n">avg_reward</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">q_table</span><span class="p">,</span> <span class="n">rewards_history</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">create_inventory_env</span><span class="p">()</span>
+    <span class="n">q_table</span><span class="p">,</span> <span class="n">rewards</span> <span class="o">=</span> <span class="n">train_agent</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+
+    <span class="c1"># Print learned policy</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Learned Policy (state -&gt; order quantity):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">q_table</span><span class="p">[</span><span class="n">state</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Inventory </span><span class="si">{</span><span class="n">state</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2">: Order </span><span class="si">{</span><span class="n">action</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-with-stable-baselines3">
+<h2>Using with Stable-Baselines3<a class="headerlink" href="#using-with-stable-baselines3" title="Link to this heading"></a></h2>
+<p>For more sophisticated RL algorithms, use Stable-Baselines3:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">PPO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3.common.env_checker</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_env</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_with_sb3</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train using Stable-Baselines3 PPO.&quot;&quot;&quot;</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">create_inventory_env</span><span class="p">()</span>
+
+    <span class="c1"># Verify environment compatibility</span>
+    <span class="n">check_env</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+
+    <span class="c1"># Create and train model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span>
+        <span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span>
+        <span class="n">env</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">,</span>
+        <span class="n">n_steps</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+        <span class="n">n_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+
+    <span class="c1"># Evaluate</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+        <span class="n">action</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluation reward: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</section>
+<section id="decision-points">
+<h2>Decision Points<a class="headerlink" href="#decision-points" title="Link to this heading"></a></h2>
+<p>For more complex simulations, use <code class="docutils literal notranslate"><span class="pre">DecisionPoint</span></code> to define where actions are needed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionPoint</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ComplexSimulation</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">,</span> <span class="n">RLInterface</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decision_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_machine_idle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when a machine becomes idle.&quot;&quot;&quot;</span>
+        <span class="c1"># Create decision point: which job to process next?</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="n">DecisionPoint</span><span class="p">(</span>
+            <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span>
+            <span class="n">available_actions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_available_jobs</span><span class="p">(</span><span class="n">machine</span><span class="p">),</span>
+            <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;machine&quot;</span><span class="p">:</span> <span class="n">machine</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decision_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
+        <span class="c1"># Wait for action from RL agent</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-agent-rl">
+<h2>Multi-Agent RL<a class="headerlink" href="#multi-agent-rl" title="Link to this heading"></a></h2>
+<p>For multi-agent scenarios, use <code class="docutils literal notranslate"><span class="pre">MultiAgentInterface</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiAgentInterface</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MultiAgentSim</span><span class="p">(</span><span class="n">simcraft</span><span class="o">.</span><span class="n">Simulation</span><span class="p">,</span> <span class="n">MultiAgentInterface</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_agent_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;agent_1&quot;</span><span class="p">,</span> <span class="s2">&quot;agent_2&quot;</span><span class="p">,</span> <span class="s2">&quot;agent_3&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">):</span>
+        <span class="c1"># Return agent-specific observation</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="c1"># Apply agent-specific action</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>See <a class="reference internal" href="../examples/port_terminal.html"><span class="doc std std-doc">Port Terminal Example</span></a> for a complete RL-ready simulation</p></li>
+<li><p>Explore the <a class="reference internal" href="../api/optimization.html"><span class="doc std std-doc">Optimization API</span></a> for more details</p></li>
+<li><p>Check out <a class="reference external" href="https://stable-baselines3.readthedocs.io/">Stable-Baselines3 documentation</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first_simulation.html" class="btn btn-neutral float-left" title="Building Your First Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Bulent Soykan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

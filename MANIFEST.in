@@ -1,0 +1,4 @@
+include LICENSE.txt
+include README.md
+include simcraft_logo.png
+recursive-include simcraft *.py

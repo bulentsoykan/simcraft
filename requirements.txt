@@ -1,0 +1,19 @@
+# Core dependencies
+sortedcontainers>=2.4.0
+numpy>=1.20.0
+
+# Optional: Visualization
+# matplotlib>=3.5.0
+# pandas>=1.4.0
+
+# Optional: Reinforcement Learning
+# torch>=2.0.0
+
+# Optional: Configuration
+# pyyaml>=6.0
+
+# Development
+# pytest>=7.0.0
+# pytest-cov>=4.0.0
+# black>=23.0.0
+# mypy>=1.0.0

@@ -1,0 +1,16 @@
+/* ABOUTME: Custom CSS overrides for SimCraft documentation. */
+/* ABOUTME: Minimal styling adjustments for RTD theme. */
+
+/* Improve code block readability */
+.highlight pre {
+    font-size: 0.9em;
+}
+
+/* Better spacing for API documentation */
+dl.py.class > dt,
+dl.py.function > dt,
+dl.py.method > dt {
+    padding: 0.5em;
+    background-color: #f8f8f8;
+    border-left: 3px solid #6ab0de;
+}

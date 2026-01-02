@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M/M/1 Queue Example &mdash; SimCraft 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e14a9214" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Manufacturing Example" href="manufacturing.html" />
+    <link rel="prev" title="Examples" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#visualization">Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#all-dependencies">All Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verify-installation">Verify Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#hello-world">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#scheduling-events">Scheduling Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#random-numbers">Random Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#m-m-1-queue-example">M/M/1 Queue Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first_simulation.html">Building Your First Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#the-scenario">The Scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-1-create-the-simulation-class">Step 1: Create the Simulation Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-2-handle-customer-arrivals">Step 2: Handle Customer Arrivals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-3-handle-service-events">Step 3: Handle Service Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-4-add-reporting">Step 4: Add Reporting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#step-5-run-the-simulation">Step 5: Run the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#complete-code">Complete Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#running-the-simulation">Running the Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#experimentation">Experimentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/first_simulation.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/rl_integration.html">Reinforcement Learning Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#what-you-ll-learn">What You’ll Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-1-define-the-problem">Step 1: Define the Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-2-implement-rlinterface">Step 2: Implement RLInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-3-create-the-gym-environment">Step 3: Create the Gym Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#step-4-training-loop">Step 4: Training Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#using-with-stable-baselines3">Using with Stable-Baselines3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#decision-points">Decision Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#multi-agent-rl">Multi-Agent RL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/rl_integration.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#tutorial-overview">Tutorial Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#available-examples">Available Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">M/M/1 Queue Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queueing-theory-background">Queueing Theory Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extending-the-example">Extending the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manufacturing.html">Manufacturing Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#the-manufacturing-process">The Manufacturing Process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#key-patterns-demonstrated">Key Patterns Demonstrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#extensions">Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manufacturing.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="port_terminal.html">Port Terminal Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#terminal-operations">Terminal Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#rl-integration">RL Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#running-the-example">Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#sample-output">Sample Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#key-patterns">Key Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port_terminal.html#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#example-overview">Example Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#running-examples">Running Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#learning-path">Learning Path</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/core.html">Core Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#simulation">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#event">Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/core.html#clock">Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/resources.html">Resources Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#server">Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#queue">Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource">Resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/resources.html#resource-pool">Resource Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/statistics.html">Statistics Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#tally">Tally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/statistics.html#monitor">Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/activities.html">Activities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/activities.html#state-machine">State Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/random.html">Random Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#randomgenerator">RandomGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#stream-management">Stream Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/random.html#alternative-generators">Alternative Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/optimization.html">Optimization Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#optimization-interface">Optimization Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/optimization.html#reinforcement-learning-interface">Reinforcement Learning Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/utils.html">Utils Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/utils.html#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/index.html#module-overview">Module Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#id1">[1.0.0] - 2024-12-28</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Examples</a></li>
+      <li class="breadcrumb-item active">M/M/1 Queue Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/mm1_queue.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="m-m-1-queue-example">
+<h1>M/M/1 Queue Example<a class="headerlink" href="#m-m-1-queue-example" title="Link to this heading"></a></h1>
+<p>A classic single-server queueing system with theoretical validation.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The M/M/1 queue is the simplest queueing model:</p>
+<ul class="simple">
+<li><p><strong>M</strong>: Markovian (Poisson) arrivals</p></li>
+<li><p><strong>M</strong>: Markovian (exponential) service times</p></li>
+<li><p><strong>1</strong>: Single server</p></li>
+</ul>
+<p>This example demonstrates:</p>
+<ul class="simple">
+<li><p>Basic event scheduling</p></li>
+<li><p>Server resource usage</p></li>
+<li><p>Statistics collection (Tally, TimeSeries)</p></li>
+<li><p>Comparison with theoretical values</p></li>
+</ul>
+</section>
+<section id="queueing-theory-background">
+<h2>Queueing Theory Background<a class="headerlink" href="#queueing-theory-background" title="Link to this heading"></a></h2>
+<p>For an M/M/1 queue with arrival rate λ and service rate μ:</p>
+<ul class="simple">
+<li><p><strong>Utilization</strong>: ρ = λ/μ</p></li>
+<li><p><strong>Average queue length</strong>: Lq = ρ² / (1 - ρ)</p></li>
+<li><p><strong>Average wait time</strong>: Wq = ρ / (μ(1 - ρ))</p></li>
+<li><p><strong>Average system time</strong>: W = 1 / (μ(1 - ρ))</p></li>
+</ul>
+<p>The system is stable when ρ &lt; 1.</p>
+</section>
+<section id="code-walkthrough">
+<h2>Code Walkthrough<a class="headerlink" href="#code-walkthrough" title="Link to this heading"></a></h2>
+<section id="customer-entity">
+<h3>Customer Entity<a class="headerlink" href="#customer-entity" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.core.entity</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimedEntity</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Customer</span><span class="p">(</span><span class="n">TimedEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A customer in the queueing system.&quot;&quot;&quot;</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">TimedEntity</span></code> base class provides automatic timing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">record_entry(time)</span></code>: Mark arrival time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">record_service_start(time)</span></code>: Mark when service begins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">record_exit(time)</span></code>: Mark departure time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waiting_time</span></code>: Time from entry to service start</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_time</span></code>: Total time in system</p></li>
+</ul>
+</section>
+<section id="simulation-class">
+<h3>Simulation Class<a class="headerlink" href="#simulation-class" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MM1Queue</span><span class="p">(</span><span class="n">Simulation</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">arrival_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">service_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MM1Queue&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span> <span class="o">=</span> <span class="n">arrival_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service_rate</span> <span class="o">=</span> <span class="n">service_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">arrival_rate</span> <span class="o">/</span> <span class="n">service_rate</span>
+
+        <span class="c1"># Create server with exponential service time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+            <span class="n">sim</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">service_time</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_rate</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue_length</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;QueueLength&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span> <span class="o">=</span> <span class="n">Tally</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;WaitTime&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_times</span> <span class="o">=</span> <span class="n">Tally</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;SystemTime&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Set up callbacks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_service_start</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">on_departure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_departure</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="event-handlers">
+<h3>Event Handlers<a class="headerlink" href="#event-handlers" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schedule first arrival.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_arrival</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle customer arrival.&quot;&quot;&quot;</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">()</span>
+    <span class="n">customer</span><span class="o">.</span><span class="n">record_entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+
+    <span class="c1"># Track queue length</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">queue_length</span><span class="o">.</span><span class="n">observe_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Enter server queue</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+
+    <span class="c1"># Schedule next arrival (exponential interarrival)</span>
+    <span class="n">interarrival</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrival_rate</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arrival</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">interarrival</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_service_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Record wait time when service begins.&quot;&quot;&quot;</span>
+    <span class="n">customer</span><span class="o">.</span><span class="n">record_service_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wait_times</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">waiting_time</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_departure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Record system time when customer leaves.&quot;&quot;&quot;</span>
+    <span class="n">customer</span><span class="o">.</span><span class="n">record_exit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">queue_length</span><span class="o">.</span><span class="n">observe_change</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">system_times</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">flow_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-example">
+<h2>Running the Example<a class="headerlink" href="#running-the-example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.examples.mm1_queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">MM1Queue</span>
+
+<span class="c1"># Create simulation with ρ = 0.8</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">MM1Queue</span><span class="p">(</span><span class="n">arrival_rate</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">service_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Run for 10,000 time units</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1"># Get results</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation queue length: </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;simulation_results&#39;</span><span class="p">][</span><span class="s1">&#39;average_queue_length&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical queue length: </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;theoretical_values&#39;</span><span class="p">][</span><span class="s1">&#39;average_queue_length&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-output">
+<h2>Sample Output<a class="headerlink" href="#sample-output" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="o">/</span><span class="n">M</span><span class="o">/</span><span class="mi">1</span> <span class="n">Queue</span> <span class="n">Simulation</span>
+<span class="o">============================================================</span>
+
+<span class="n">Parameters</span><span class="p">:</span>
+  <span class="n">arrival_rate</span><span class="p">:</span> <span class="mf">0.8000</span>
+  <span class="n">service_rate</span><span class="p">:</span> <span class="mf">1.0000</span>
+  <span class="n">utilization_rho</span><span class="p">:</span> <span class="mf">0.8000</span>
+
+<span class="n">Simulation</span> <span class="n">Results</span><span class="p">:</span>
+  <span class="n">simulation_time</span><span class="p">:</span> <span class="mf">10000.0000</span>
+  <span class="n">customers_arrived</span><span class="p">:</span> <span class="mi">7987</span>
+  <span class="n">customers_served</span><span class="p">:</span> <span class="mi">7986</span>
+  <span class="n">average_queue_length</span><span class="p">:</span> <span class="mf">3.1842</span>
+  <span class="n">average_wait_time</span><span class="p">:</span> <span class="mf">3.9712</span>
+  <span class="n">average_system_time</span><span class="p">:</span> <span class="mf">4.9893</span>
+  <span class="n">server_utilization</span><span class="p">:</span> <span class="mf">0.7992</span>
+
+<span class="n">Theoretical</span> <span class="n">Values</span><span class="p">:</span>
+  <span class="n">average_queue_length</span><span class="p">:</span> <span class="mf">3.2000</span>
+  <span class="n">average_wait_time</span><span class="p">:</span> <span class="mf">4.0000</span>
+  <span class="n">average_system_time</span><span class="p">:</span> <span class="mf">5.0000</span>
+
+<span class="n">Comparison</span> <span class="p">(</span><span class="n">Simulation</span> <span class="n">vs</span> <span class="n">Theoretical</span><span class="p">):</span>
+  <span class="n">Queue</span> <span class="n">Length</span><span class="p">:</span> <span class="mf">3.1842</span> <span class="n">vs</span> <span class="mf">3.2000</span>
+  <span class="n">Wait</span> <span class="n">Time</span><span class="p">:</span> <span class="mf">3.9712</span> <span class="n">vs</span> <span class="mf">4.0000</span>
+</pre></div>
+</div>
+</section>
+<section id="extending-the-example">
+<h2>Extending the Example<a class="headerlink" href="#extending-the-example" title="Link to this heading"></a></h2>
+<section id="m-m-c-queue-multiple-servers">
+<h3>M/M/c Queue (Multiple Servers)<a class="headerlink" href="#m-m-c-queue-multiple-servers" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simply increase server capacity</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+    <span class="n">sim</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+    <span class="n">capacity</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Three servers</span>
+    <span class="n">service_time</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_rate</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="priority-queue">
+<h3>Priority Queue<a class="headerlink" href="#priority-queue" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simcraft.resources.queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">PriorityQueue</span>
+
+<span class="c1"># Use priority queue instead of FIFO</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+    <span class="n">sim</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+    <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">queue</span><span class="o">=</span><span class="n">PriorityQueue</span><span class="p">(),</span>
+    <span class="n">service_time</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">service_rate</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Assign priority when creating customers</span>
+<span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="warmup-period">
+<h3>Warmup Period<a class="headerlink" href="#warmup-period" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">MM1Queue</span><span class="p">(</span><span class="n">arrival_rate</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">service_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Run warmup (statistics are reset afterward)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">warmup</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Run main simulation</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading"></a></h2>
+<p>The complete source code is in <code class="docutils literal notranslate"><span class="pre">simcraft/examples/mm1_queue.py</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manufacturing.html" class="btn btn-neutral float-right" title="Manufacturing Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Bulent Soykan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
