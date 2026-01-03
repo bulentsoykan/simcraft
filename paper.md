@@ -11,9 +11,9 @@ authors:
     orcid: 0000-0002-7958-2650
     affiliation: 1
 affiliations:
-  - name: Independent Researcher
+  - name: University of Central Florida, Orlando, FL, USA
     index: 1
-date: 1 January 2025
+date: 1 January 2026
 bibliography: paper.bib
 ---
 
@@ -37,7 +37,7 @@ SimCraft addresses this need by providing:
 
 4. **Full Type Annotations**: Complete type hints throughout the codebase, improving developer experience and enabling static analysis tools.
 
-The framework has been designed for academic research and industrial applications, including use cases inspired by Winter Simulation Conference challenges in semiconductor manufacturing [@wsc2023] and container port operations [@wsc2025].
+The framework has been designed for academic research and industrial applications, including use cases inspired by Winter Simulation Conference challenges in semiconductor manufacturing and container port operations.
 
 # Key Features
 
