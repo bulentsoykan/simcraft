@@ -39,6 +39,16 @@ SimCraft addresses this need by providing:
 
 The framework has been designed for academic research and industrial applications, including use cases inspired by Winter Simulation Conference challenges in semiconductor manufacturing and container port operations.
 
+# Software Design
+
+SimCraft's architecture reflects three deliberate trade-offs. First, we chose an event-driven, object-oriented paradigm over the process-based generator approach used by SimPy and Salabim. While generators provide elegant syntax for sequential processes, they complicate programmatic control—pausing mid-process, extracting state, or resetting simulations requires workarounds that conflict with optimization loop requirements. Event-driven design makes simulation state explicitly accessible, which is essential for RL algorithms that must observe, act, and reset repeatedly.
+
+Second, we implemented hierarchical composition through parent-child relationships with automatic clock sharing. Child simulations inherit their parent's clock and event queue, enabling modular model construction where components (e.g., a Workstation) can be developed independently and composed into larger systems (e.g., a Factory). This pattern does not exist in current Python DES frameworks.
+
+Third, we integrated RL interfaces at the framework level rather than as an external adapter. State spaces, action spaces, and reward signals are first-class concepts, reducing the implementation overhead that researchers typically face when connecting simulations to learning algorithms.
+
+**Build vs. Contribute Justification**: These architectural choices are incompatible with SimPy's generator-centric design and would require fundamental restructuring rather than incremental contribution. SimCraft addresses a different design point in the DES solution space—one optimized for optimization algorithm integration rather than process modeling convenience.
+
 # Key Features
 
 SimCraft provides a layered architecture with four main components:
@@ -47,7 +57,7 @@ SimCraft provides a layered architecture with four main components:
 
 **Resource Management**: The framework includes rich resource primitives: `Server` for multi-server queueing stations, `Queue` for FIFO and priority-based waiting, `Resource` for acquire/release semantics with preemption support, and `ResourcePool` for distinguishable resources with custom selection policies.
 
-**Statistics Collection**: Four collector types cover common analysis needs: `Counter` for event counting with rate calculation, `Tally` for observation-based statistics using Welford's algorithm, `TimeSeries` for time-weighted metrics equivalent to O2DES's HourCounter pattern, and `Monitor` for unified data collection with JSON and DataFrame export.
+**Statistics Collection**: Four collector types cover common analysis needs: `Counter` for event counting with rate calculation, `Tally` for observation-based statistics using Welford's algorithm, `TimeSeries` for time-weighted metrics, and `Monitor` for unified data collection with JSON and DataFrame export.
 
 **Optimization Interface**: The `RLInterface` abstract class defines the contract for RL-compatible simulations, while `RLEnvironment` provides a Gym-compatible wrapper. Additional classes support state/action space definitions, experience replay buffers, and multi-agent scenarios.
 
@@ -59,8 +69,22 @@ The package includes three documented example models demonstrating progressive c
 - **Manufacturing Simulation**: A semiconductor fabrication model with multi-step routing and quality time constraints, inspired by WSC 2023 benchmarks.
 - **Port Terminal**: A container terminal with multiple resource types (berths, cranes, vehicles) and decision points suitable for RL-based optimization.
 
+# Research Impact Statement
+
+SimCraft addresses a documented gap in Python's simulation ecosystem: the lack of DES frameworks designed for optimization and reinforcement learning integration. While simulation-optimization is well-established in operations research, researchers currently face significant implementation overhead connecting Python simulations to modern RL libraries.
+
+**Credible Near-Term Significance**: The framework provides novel capability through its native Gym-compatible RL interface, eliminating the adapter code typically required to use DES environments with libraries like Stable-Baselines3. Benchmark validation against M/M/1 theoretical values confirms correctness of the core engine. The included manufacturing and port terminal examples demonstrate applicability to established research domains, including WSC simulation challenges.
+
+**Community Readiness**: SimCraft is available on PyPI (`pip install simcraft`), licensed under MIT, and includes comprehensive documentation on ReadTheDocs. The test suite covers core functionality with pytest. The GitHub repository accepts contributions and issue reports.
+
+**Early Adoption Signals**: Following public announcement, the framework has received inquiries from industry practitioners exploring integration with digital twin platforms, suggesting relevance to both academic and industrial applications. The hierarchical composition pattern has generated discussion among simulation practitioners regarding its applicability to complex system modeling.
+
+# AI Usage Disclosure
+
+Generative AI tools were not used in the creation of SimCraft's core software implementation. 
+
 # Acknowledgements
 
-SimCraft builds upon concepts from O2DES.NET, SimPy, and Salabim. The framework design was informed by challenges from the Winter Simulation Conference and the need for better integration between simulation and machine learning research.
+SimCraft builds upon concepts from O2DES.NET, SimPy, and Salabim. The framework design was informed by challenges from the need for better integration between simulation and machine learning research.
 
 # References

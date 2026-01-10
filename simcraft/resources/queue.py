@@ -28,6 +28,14 @@ T = TypeVar("T")
 
 
 @dataclass
+class QueueEntry(Generic[T]):
+    """Wrapper for queue items with entry metadata."""
+
+    item: T
+    entry_time: float
+
+
+@dataclass
 class QueueStats:
     """
     Statistics for queue performance.
@@ -140,8 +148,7 @@ class Queue(Generic[T]):
         self._capacity = capacity
         self._name = name or f"Queue_{id(self)}"
 
-        self._items: Deque[T] = deque()
-        self._entry_times: dict = {}
+        self._entries: Deque[QueueEntry[T]] = deque()
         self._stats = QueueStats()
 
         # Callbacks
@@ -166,18 +173,18 @@ class Queue(Generic[T]):
     @property
     def is_empty(self) -> bool:
         """Check if queue is empty."""
-        return len(self._items) == 0
+        return len(self._entries) == 0
 
     @property
     def is_full(self) -> bool:
         """Check if queue is at capacity."""
         if self._capacity == 0:
             return False
-        return len(self._items) >= self._capacity
+        return len(self._entries) >= self._capacity
 
     def __len__(self) -> int:
         """Get current queue length."""
-        return len(self._items)
+        return len(self._entries)
 
     def enqueue(self, item: T) -> bool:
         """
@@ -196,8 +203,8 @@ class Queue(Generic[T]):
         if self.is_full:
             return False
 
-        self._items.append(item)
-        self._entry_times[id(item)] = self._sim.now
+        entry = QueueEntry(item=item, entry_time=self._sim.now)
+        self._entries.append(entry)
         self._stats.record_entry(self._sim.now)
 
         if self._on_enqueue:
@@ -217,16 +224,15 @@ class Queue(Generic[T]):
         if self.is_empty:
             return None
 
-        item = self._items.popleft()
-        entry_time = self._entry_times.pop(id(item), self._sim.now)
-        wait_time = self._sim.now - entry_time
+        entry = self._entries.popleft()
+        wait_time = self._sim.now - entry.entry_time
 
         self._stats.record_exit(self._sim.now, wait_time)
 
         if self._on_dequeue:
-            self._on_dequeue(item)
+            self._on_dequeue(entry.item)
 
-        return item
+        return entry.item
 
     def peek(self) -> Optional[T]:
         """
@@ -239,7 +245,7 @@ class Queue(Generic[T]):
         """
         if self.is_empty:
             return None
-        return self._items[0]
+        return self._entries[0].item
 
     def remove(self, item: T) -> bool:
         """
@@ -255,14 +261,13 @@ class Queue(Generic[T]):
         bool
             True if item was found and removed
         """
-        try:
-            self._items.remove(item)
-            entry_time = self._entry_times.pop(id(item), self._sim.now)
-            wait_time = self._sim.now - entry_time
-            self._stats.record_exit(self._sim.now, wait_time)
-            return True
-        except ValueError:
-            return False
+        for entry in self._entries:
+            if entry.item is item or entry.item == item:
+                self._entries.remove(entry)
+                wait_time = self._sim.now - entry.entry_time
+                self._stats.record_exit(self._sim.now, wait_time)
+                return True
+        return False
 
     def clear(self) -> List[T]:
         """
@@ -280,7 +285,7 @@ class Queue(Generic[T]):
 
     def contains(self, item: T) -> bool:
         """Check if item is in the queue."""
-        return item in self._items
+        return any(entry.item is item or entry.item == item for entry in self._entries)
 
     def on_enqueue(self, callback: Callable[[T], None]) -> None:
         """Set callback for enqueue events."""
@@ -293,11 +298,11 @@ class Queue(Generic[T]):
     def reset_stats(self) -> None:
         """Reset statistics (keep items)."""
         self._stats.reset()
-        self._stats._current_length = len(self._items)
+        self._stats._current_length = len(self._entries)
 
     def __iter__(self) -> Iterator[T]:
         """Iterate over items in queue order."""
-        return iter(self._items)
+        return (entry.item for entry in self._entries)
 
     def __repr__(self) -> str:
         """Return detailed representation."""
@@ -358,7 +363,6 @@ class PriorityQueue(Generic[T]):
         self._heap: List[PriorityItem[T]] = []
         self._counter = 0
         self._stats = QueueStats()
-        self._item_map: dict = {}
 
     @property
     def name(self) -> str:
@@ -417,7 +421,6 @@ class PriorityQueue(Generic[T]):
         )
 
         heapq.heappush(self._heap, entry)
-        self._item_map[id(item)] = entry
         self._stats.record_entry(self._sim.now)
 
         return True
@@ -435,7 +438,6 @@ class PriorityQueue(Generic[T]):
             return None
 
         entry = heapq.heappop(self._heap)
-        self._item_map.pop(id(entry.item), None)
 
         wait_time = self._sim.now - entry.entry_time
         self._stats.record_exit(self._sim.now, wait_time)
@@ -455,6 +457,13 @@ class PriorityQueue(Generic[T]):
             return None
         return self._heap[0].item
 
+    def _find_entry(self, item: T) -> Optional[PriorityItem[T]]:
+        """Find the first entry matching the item."""
+        for entry in self._heap:
+            if entry.item is item or entry.item == item:
+                return entry
+        return None
+
     def remove(self, item: T) -> bool:
         """
         Remove a specific item from the queue.
@@ -469,7 +478,7 @@ class PriorityQueue(Generic[T]):
         bool
             True if item was found and removed
         """
-        entry = self._item_map.pop(id(item), None)
+        entry = self._find_entry(item)
         if entry is None:
             return False
 
@@ -497,10 +506,10 @@ class PriorityQueue(Generic[T]):
         bool
             True if item was found and updated
         """
-        if id(item) not in self._item_map:
+        entry = self._find_entry(item)
+        if entry is None:
             return False
 
-        entry = self._item_map[id(item)]
         self._heap.remove(entry)
 
         self._counter += 1
@@ -512,7 +521,6 @@ class PriorityQueue(Generic[T]):
         )
 
         heapq.heappush(self._heap, new_entry)
-        self._item_map[id(item)] = new_entry
 
         return True
 

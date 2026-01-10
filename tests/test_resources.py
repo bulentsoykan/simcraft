@@ -76,6 +76,52 @@ class TestQueue:
         assert queue.stats.exits == 1
 
 
+    def test_duplicate_primitives(self):
+        """Test queue correctly handles duplicate primitive values."""
+        sim = Simulation()
+        queue = Queue(sim)
+
+        # Enqueue same integer value multiple times
+        queue.enqueue(5)
+        queue.enqueue(5)
+        queue.enqueue(5)
+
+        assert len(queue) == 3
+
+        # Advance time between dequeues to verify entry times are tracked correctly
+        sim._clock.advance(1.0)
+        first = queue.dequeue()
+        sim._clock.advance(1.0)
+        second = queue.dequeue()
+        sim._clock.advance(1.0)
+        third = queue.dequeue()
+
+        assert first == 5
+        assert second == 5
+        assert third == 5
+        assert len(queue) == 0
+        assert queue.stats.entries == 3
+        assert queue.stats.exits == 3
+
+    def test_duplicate_strings(self):
+        """Test queue correctly handles duplicate string values."""
+        sim = Simulation()
+        queue = Queue(sim)
+
+        # Strings with same content have same id() due to interning
+        queue.enqueue("hello")
+        queue.enqueue("hello")
+
+        assert len(queue) == 2
+
+        first = queue.dequeue()
+        second = queue.dequeue()
+
+        assert first == "hello"
+        assert second == "hello"
+        assert queue.is_empty
+
+
 class TestPriorityQueue:
     """Tests for PriorityQueue class."""
 
@@ -101,6 +147,57 @@ class TestPriorityQueue:
         assert queue.dequeue().priority == 1
         assert queue.dequeue().priority == 3
         assert queue.dequeue().priority == 5
+
+    def test_duplicate_primitives(self):
+        """Test priority queue correctly handles duplicate primitive values."""
+        sim = Simulation()
+        queue = PriorityQueue(sim)
+
+        # Enqueue same integer value multiple times with different priorities
+        queue.enqueue(5, priority=3)
+        queue.enqueue(5, priority=1)  # Highest priority
+        queue.enqueue(5, priority=2)
+
+        assert len(queue) == 3
+
+        # Should dequeue in priority order
+        first = queue.dequeue()
+        second = queue.dequeue()
+        third = queue.dequeue()
+
+        assert first == 5
+        assert second == 5
+        assert third == 5
+        assert len(queue) == 0
+        assert queue.stats.entries == 3
+        assert queue.stats.exits == 3
+
+    def test_remove_with_duplicates(self):
+        """Test remove works correctly with duplicate values."""
+        sim = Simulation()
+        queue = PriorityQueue(sim)
+
+        # Enqueue same value multiple times
+        queue.enqueue(10, priority=1)
+        queue.enqueue(10, priority=2)
+        queue.enqueue(10, priority=3)
+
+        assert len(queue) == 3
+
+        # Remove should only remove one instance
+        assert queue.remove(10) is True
+        assert len(queue) == 2
+
+        # Can still remove another
+        assert queue.remove(10) is True
+        assert len(queue) == 1
+
+        # And the last one
+        assert queue.remove(10) is True
+        assert len(queue) == 0
+
+        # No more to remove
+        assert queue.remove(10) is False
 
 
 class TestServer:
