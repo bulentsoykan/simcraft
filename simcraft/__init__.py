@@ -86,6 +86,9 @@ from simcraft.random.streams import RandomStream
 from simcraft.optimization.base import OptimizationInterface
 from simcraft.optimization.rl_interface import RLInterface
 
+# Visualization
+from simcraft.visualization.recorder import VisualizationRecorder
+
 __all__ = [
     # Version
     "__version__",
@@ -120,4 +123,7 @@ __all__ = [
     # Optimization
     "OptimizationInterface",
     "RLInterface",
+
+    # Visualization
+    "VisualizationRecorder",
 ]
