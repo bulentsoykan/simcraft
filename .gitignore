@@ -5,3 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
+.claude/
+.pytest_cache
+.venv/
+CLAUDE.md
+.github/

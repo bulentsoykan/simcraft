@@ -1,0 +1,859 @@
+{
+  "version": "1.0",
+  "simulation": {
+    "name": "MM1Queue",
+    "duration": 50.0
+  },
+  "components": {
+    "Teller": {
+      "type": "server",
+      "capacity": 1
+    },
+    "Teller.queue": {
+      "type": "queue",
+      "capacity": 0
+    }
+  },
+  "events": [
+    {
+      "t": 0.0,
+      "type": "entity_created",
+      "entity": "Customer_1",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 0.0,
+      "type": "start_service",
+      "entity": "Customer_1",
+      "loc": "Teller"
+    },
+    {
+      "t": 0.01722928242735409,
+      "type": "depart",
+      "entity": "Customer_1",
+      "loc": "Teller"
+    },
+    {
+      "t": 4.662373463822937,
+      "type": "entity_created",
+      "entity": "Customer_2",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 4.662373463822937,
+      "type": "start_service",
+      "entity": "Customer_2",
+      "loc": "Teller"
+    },
+    {
+      "t": 5.242445034243308,
+      "type": "depart",
+      "entity": "Customer_2",
+      "loc": "Teller"
+    },
+    {
+      "t": 7.096685994334895,
+      "type": "entity_created",
+      "entity": "Customer_3",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 7.096685994334895,
+      "type": "start_service",
+      "entity": "Customer_3",
+      "loc": "Teller"
+    },
+    {
+      "t": 7.623799471378907,
+      "type": "depart",
+      "entity": "Customer_3",
+      "loc": "Teller"
+    },
+    {
+      "t": 7.656120634553633,
+      "type": "entity_created",
+      "entity": "Customer_4",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 7.656120634553633,
+      "type": "start_service",
+      "entity": "Customer_4",
+      "loc": "Teller"
+    },
+    {
+      "t": 7.766206458795794,
+      "type": "depart",
+      "entity": "Customer_4",
+      "loc": "Teller"
+    },
+    {
+      "t": 8.475831809901774,
+      "type": "entity_created",
+      "entity": "Customer_5",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 8.475831809901774,
+      "type": "start_service",
+      "entity": "Customer_5",
+      "loc": "Teller"
+    },
+    {
+      "t": 8.686841179154124,
+      "type": "depart",
+      "entity": "Customer_5",
+      "loc": "Teller"
+    },
+    {
+      "t": 9.333447020668315,
+      "type": "entity_created",
+      "entity": "Customer_6",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 9.333447020668315,
+      "type": "start_service",
+      "entity": "Customer_6",
+      "loc": "Teller"
+    },
+    {
+      "t": 10.73012006278565,
+      "type": "entity_created",
+      "entity": "Customer_7",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 10.73012006278565,
+      "type": "enter_queue",
+      "entity": "Customer_7",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 11.437001361780013,
+      "type": "depart",
+      "entity": "Customer_6",
+      "loc": "Teller"
+    },
+    {
+      "t": 11.437001361780013,
+      "type": "start_service",
+      "entity": "Customer_7",
+      "loc": "Teller"
+    },
+    {
+      "t": 11.472239483201468,
+      "type": "depart",
+      "entity": "Customer_7",
+      "loc": "Teller"
+    },
+    {
+      "t": 11.5995348187826,
+      "type": "entity_created",
+      "entity": "Customer_8",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 11.5995348187826,
+      "type": "start_service",
+      "entity": "Customer_8",
+      "loc": "Teller"
+    },
+    {
+      "t": 12.297834241893831,
+      "type": "entity_created",
+      "entity": "Customer_9",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 12.297834241893831,
+      "type": "enter_queue",
+      "entity": "Customer_9",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 12.442879894975697,
+      "type": "depart",
+      "entity": "Customer_8",
+      "loc": "Teller"
+    },
+    {
+      "t": 12.442879894975697,
+      "type": "start_service",
+      "entity": "Customer_9",
+      "loc": "Teller"
+    },
+    {
+      "t": 17.590728091894093,
+      "type": "depart",
+      "entity": "Customer_9",
+      "loc": "Teller"
+    },
+    {
+      "t": 18.78671023627562,
+      "type": "entity_created",
+      "entity": "Customer_10",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 18.78671023627562,
+      "type": "start_service",
+      "entity": "Customer_10",
+      "loc": "Teller"
+    },
+    {
+      "t": 19.144319889059076,
+      "type": "entity_created",
+      "entity": "Customer_11",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 19.144319889059076,
+      "type": "enter_queue",
+      "entity": "Customer_11",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 19.259846385751725,
+      "type": "entity_created",
+      "entity": "Customer_12",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 19.259846385751725,
+      "type": "enter_queue",
+      "entity": "Customer_12",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 20.14481760891391,
+      "type": "depart",
+      "entity": "Customer_10",
+      "loc": "Teller"
+    },
+    {
+      "t": 20.14481760891391,
+      "type": "start_service",
+      "entity": "Customer_11",
+      "loc": "Teller"
+    },
+    {
+      "t": 20.938688168288174,
+      "type": "depart",
+      "entity": "Customer_11",
+      "loc": "Teller"
+    },
+    {
+      "t": 20.938688168288174,
+      "type": "start_service",
+      "entity": "Customer_12",
+      "loc": "Teller"
+    },
+    {
+      "t": 21.148142857538147,
+      "type": "depart",
+      "entity": "Customer_12",
+      "loc": "Teller"
+    },
+    {
+      "t": 22.412940945980488,
+      "type": "entity_created",
+      "entity": "Customer_13",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 22.412940945980488,
+      "type": "start_service",
+      "entity": "Customer_13",
+      "loc": "Teller"
+    },
+    {
+      "t": 24.36969817710934,
+      "type": "entity_created",
+      "entity": "Customer_14",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 24.36969817710934,
+      "type": "enter_queue",
+      "entity": "Customer_14",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 24.657673729990645,
+      "type": "entity_created",
+      "entity": "Customer_15",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 24.657673729990645,
+      "type": "enter_queue",
+      "entity": "Customer_15",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 24.870442037748603,
+      "type": "entity_created",
+      "entity": "Customer_16",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 24.870442037748603,
+      "type": "enter_queue",
+      "entity": "Customer_16",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 27.185930774991007,
+      "type": "entity_created",
+      "entity": "Customer_17",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 27.185930774991007,
+      "type": "enter_queue",
+      "entity": "Customer_17",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 27.709908694587856,
+      "type": "entity_created",
+      "entity": "Customer_18",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 27.709908694587856,
+      "type": "enter_queue",
+      "entity": "Customer_18",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 28.009504640615777,
+      "type": "depart",
+      "entity": "Customer_13",
+      "loc": "Teller"
+    },
+    {
+      "t": 28.009504640615777,
+      "type": "start_service",
+      "entity": "Customer_14",
+      "loc": "Teller"
+    },
+    {
+      "t": 28.277398468037052,
+      "type": "entity_created",
+      "entity": "Customer_19",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 28.277398468037052,
+      "type": "enter_queue",
+      "entity": "Customer_19",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 28.497817073154238,
+      "type": "entity_created",
+      "entity": "Customer_20",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 28.497817073154238,
+      "type": "enter_queue",
+      "entity": "Customer_20",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 29.474644456370065,
+      "type": "entity_created",
+      "entity": "Customer_21",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 29.474644456370065,
+      "type": "enter_queue",
+      "entity": "Customer_21",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 29.70141327274676,
+      "type": "depart",
+      "entity": "Customer_14",
+      "loc": "Teller"
+    },
+    {
+      "t": 29.70141327274676,
+      "type": "start_service",
+      "entity": "Customer_15",
+      "loc": "Teller"
+    },
+    {
+      "t": 30.324470221287257,
+      "type": "depart",
+      "entity": "Customer_15",
+      "loc": "Teller"
+    },
+    {
+      "t": 30.324470221287257,
+      "type": "start_service",
+      "entity": "Customer_16",
+      "loc": "Teller"
+    },
+    {
+      "t": 32.65834207352834,
+      "type": "entity_created",
+      "entity": "Customer_22",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 32.65834207352834,
+      "type": "enter_queue",
+      "entity": "Customer_22",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 33.43227693238796,
+      "type": "entity_created",
+      "entity": "Customer_23",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 33.43227693238796,
+      "type": "enter_queue",
+      "entity": "Customer_23",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 34.810351389862724,
+      "type": "entity_created",
+      "entity": "Customer_24",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 34.810351389862724,
+      "type": "enter_queue",
+      "entity": "Customer_24",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 35.34616996911339,
+      "type": "depart",
+      "entity": "Customer_16",
+      "loc": "Teller"
+    },
+    {
+      "t": 35.34616996911339,
+      "type": "start_service",
+      "entity": "Customer_17",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.15805149846352,
+      "type": "entity_created",
+      "entity": "Customer_25",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 36.15805149846352,
+      "type": "enter_queue",
+      "entity": "Customer_25",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 36.28258136112894,
+      "type": "depart",
+      "entity": "Customer_17",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.28258136112894,
+      "type": "start_service",
+      "entity": "Customer_18",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.66177566738723,
+      "type": "depart",
+      "entity": "Customer_18",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.66177566738723,
+      "type": "start_service",
+      "entity": "Customer_19",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.73528809671945,
+      "type": "depart",
+      "entity": "Customer_19",
+      "loc": "Teller"
+    },
+    {
+      "t": 36.73528809671945,
+      "type": "start_service",
+      "entity": "Customer_20",
+      "loc": "Teller"
+    },
+    {
+      "t": 37.04352317615589,
+      "type": "depart",
+      "entity": "Customer_20",
+      "loc": "Teller"
+    },
+    {
+      "t": 37.04352317615589,
+      "type": "start_service",
+      "entity": "Customer_21",
+      "loc": "Teller"
+    },
+    {
+      "t": 37.55674418882323,
+      "type": "depart",
+      "entity": "Customer_21",
+      "loc": "Teller"
+    },
+    {
+      "t": 37.55674418882323,
+      "type": "start_service",
+      "entity": "Customer_22",
+      "loc": "Teller"
+    },
+    {
+      "t": 37.62860617479642,
+      "type": "entity_created",
+      "entity": "Customer_26",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 37.62860617479642,
+      "type": "enter_queue",
+      "entity": "Customer_26",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 37.94723661440488,
+      "type": "entity_created",
+      "entity": "Customer_27",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 37.94723661440488,
+      "type": "enter_queue",
+      "entity": "Customer_27",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 38.334844917857865,
+      "type": "depart",
+      "entity": "Customer_22",
+      "loc": "Teller"
+    },
+    {
+      "t": 38.334844917857865,
+      "type": "start_service",
+      "entity": "Customer_23",
+      "loc": "Teller"
+    },
+    {
+      "t": 39.18070631877239,
+      "type": "entity_created",
+      "entity": "Customer_28",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 39.18070631877239,
+      "type": "enter_queue",
+      "entity": "Customer_28",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 39.49910581091978,
+      "type": "entity_created",
+      "entity": "Customer_29",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 39.49910581091978,
+      "type": "enter_queue",
+      "entity": "Customer_29",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 39.55234565905237,
+      "type": "depart",
+      "entity": "Customer_23",
+      "loc": "Teller"
+    },
+    {
+      "t": 39.55234565905237,
+      "type": "start_service",
+      "entity": "Customer_24",
+      "loc": "Teller"
+    },
+    {
+      "t": 40.116475365565364,
+      "type": "depart",
+      "entity": "Customer_24",
+      "loc": "Teller"
+    },
+    {
+      "t": 40.116475365565364,
+      "type": "start_service",
+      "entity": "Customer_25",
+      "loc": "Teller"
+    },
+    {
+      "t": 40.719554583573846,
+      "type": "depart",
+      "entity": "Customer_25",
+      "loc": "Teller"
+    },
+    {
+      "t": 40.719554583573846,
+      "type": "start_service",
+      "entity": "Customer_26",
+      "loc": "Teller"
+    },
+    {
+      "t": 40.75903892133836,
+      "type": "entity_created",
+      "entity": "Customer_30",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 40.75903892133836,
+      "type": "enter_queue",
+      "entity": "Customer_30",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 40.86197502124298,
+      "type": "entity_created",
+      "entity": "Customer_31",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 40.86197502124298,
+      "type": "enter_queue",
+      "entity": "Customer_31",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 41.5933304621362,
+      "type": "entity_created",
+      "entity": "Customer_32",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 41.5933304621362,
+      "type": "enter_queue",
+      "entity": "Customer_32",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 41.966577959117345,
+      "type": "depart",
+      "entity": "Customer_26",
+      "loc": "Teller"
+    },
+    {
+      "t": 41.966577959117345,
+      "type": "start_service",
+      "entity": "Customer_27",
+      "loc": "Teller"
+    },
+    {
+      "t": 42.22662932872176,
+      "type": "entity_created",
+      "entity": "Customer_33",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 42.22662932872176,
+      "type": "enter_queue",
+      "entity": "Customer_33",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 43.03642101392565,
+      "type": "entity_created",
+      "entity": "Customer_34",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 43.03642101392565,
+      "type": "enter_queue",
+      "entity": "Customer_34",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 43.44714851461079,
+      "type": "entity_created",
+      "entity": "Customer_35",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 43.44714851461079,
+      "type": "enter_queue",
+      "entity": "Customer_35",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 43.980138084555264,
+      "type": "depart",
+      "entity": "Customer_27",
+      "loc": "Teller"
+    },
+    {
+      "t": 43.980138084555264,
+      "type": "start_service",
+      "entity": "Customer_28",
+      "loc": "Teller"
+    },
+    {
+      "t": 44.79106001505741,
+      "type": "depart",
+      "entity": "Customer_28",
+      "loc": "Teller"
+    },
+    {
+      "t": 44.79106001505741,
+      "type": "start_service",
+      "entity": "Customer_29",
+      "loc": "Teller"
+    },
+    {
+      "t": 47.040203875539916,
+      "type": "depart",
+      "entity": "Customer_29",
+      "loc": "Teller"
+    },
+    {
+      "t": 47.040203875539916,
+      "type": "start_service",
+      "entity": "Customer_30",
+      "loc": "Teller"
+    },
+    {
+      "t": 47.1195884219998,
+      "type": "depart",
+      "entity": "Customer_30",
+      "loc": "Teller"
+    },
+    {
+      "t": 47.1195884219998,
+      "type": "start_service",
+      "entity": "Customer_31",
+      "loc": "Teller"
+    },
+    {
+      "t": 47.2142483032503,
+      "type": "entity_created",
+      "entity": "Customer_36",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 47.2142483032503,
+      "type": "enter_queue",
+      "entity": "Customer_36",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 47.5974057213845,
+      "type": "entity_created",
+      "entity": "Customer_37",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 47.5974057213845,
+      "type": "enter_queue",
+      "entity": "Customer_37",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 47.814592832664175,
+      "type": "entity_created",
+      "entity": "Customer_38",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 47.814592832664175,
+      "type": "enter_queue",
+      "entity": "Customer_38",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 48.10175787567684,
+      "type": "entity_created",
+      "entity": "Customer_39",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 48.10175787567684,
+      "type": "enter_queue",
+      "entity": "Customer_39",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 48.27501046873234,
+      "type": "depart",
+      "entity": "Customer_31",
+      "loc": "Teller"
+    },
+    {
+      "t": 48.27501046873234,
+      "type": "start_service",
+      "entity": "Customer_32",
+      "loc": "Teller"
+    },
+    {
+      "t": 48.74938371138295,
+      "type": "entity_created",
+      "entity": "Customer_40",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 48.74938371138295,
+      "type": "enter_queue",
+      "entity": "Customer_40",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 48.7544320615206,
+      "type": "entity_created",
+      "entity": "Customer_41",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 48.7544320615206,
+      "type": "enter_queue",
+      "entity": "Customer_41",
+      "loc": "Teller.queue"
+    },
+    {
+      "t": 49.14844086129087,
+      "type": "depart",
+      "entity": "Customer_32",
+      "loc": "Teller"
+    },
+    {
+      "t": 49.14844086129087,
+      "type": "start_service",
+      "entity": "Customer_33",
+      "loc": "Teller"
+    },
+    {
+      "t": 49.79751665691659,
+      "type": "entity_created",
+      "entity": "Customer_42",
+      "entity_type": "Customer"
+    },
+    {
+      "t": 49.79751665691659,
+      "type": "enter_queue",
+      "entity": "Customer_42",
+      "loc": "Teller.queue"
+    }
+  ]
+}

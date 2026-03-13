@@ -70,6 +70,12 @@ SimCraft is designed for academic research, industrial applications, and integra
 - **Multi-Agent Support**: MARL with independent reward functions
 - **Experience Replay**: Built-in replay buffer for off-policy algorithms
 
+### Visualization & Animation
+- **VisualizationRecorder**: Record simulation events for animated playback
+- **Three.js Viewer**: Web-based 2D visualization with timeline controls
+- **Event-based replay**: Reconstruct entity positions from event stream
+- **Playback controls**: Play, pause, seek, step, and speed adjustment
+
 ---
 
 ## Installation
@@ -750,6 +756,63 @@ rewards = interface.get_rewards()
 
 ---
 
+## Visualization
+
+SimCraft includes a visualization system for recording and playing back simulation animations.
+
+### Recording Events
+
+```python
+from simcraft import Simulation, Server, VisualizationRecorder
+from simcraft.core.entity import Entity
+
+class Customer(Entity):
+    pass
+
+# Create simulation and server
+sim = Simulation(name="MM1Queue")
+server = Server(sim, capacity=1, service_time=5.0, name="Teller")
+
+# Create recorder and track the server
+recorder = VisualizationRecorder(sim)
+recorder.track_server(server)
+
+# Run simulation with arrivals
+def arrival():
+    server.enqueue(Customer())
+    sim.schedule(arrival, delay=sim.rng.exponential(1.2))
+
+sim.schedule(arrival, delay=0)
+sim.run(until=100.0)
+
+# Export animation data
+recorder.save("animation.json")
+```
+
+### Three.js Viewer
+
+The viewer is a web application that plays back recorded animations:
+
+```bash
+cd viewer
+npm install
+npm run dev
+# Open http://localhost:3000 and load animation.json
+```
+
+**Controls:**
+- **Play/Pause**: Start or pause the animation
+- **Step**: Advance to the next event
+- **Timeline**: Scrub to any point in time
+- **Speed**: Adjust playback speed (0.25x - 10x)
+
+**Visual Elements:**
+- Servers shown as rounded rectangles with capacity slots
+- Queues shown as horizontal waiting areas
+- Entities as colored circles (orange=queued, green=in service)
+
+---
+
 ## Comparison with Other Frameworks
 
 | Feature | SimCraft | SimPy | Salabim | 
@@ -817,17 +880,18 @@ pytest simcraft/tests/test_core.py -v
 
 ## Roadmap
 
-### v1.1 (Planned)
+### v1.1 (Current)
 - [ ] Process-based modeling (generator support)
-- [ ] Animation/visualization module
+- [x] Animation/visualization module (VisualizationRecorder + Three.js viewer)
 - [ ] Parallel replication support
 - [ ] More distribution fitting tools
 
 ### v1.2 (Future)
+- [ ] Real-time WebSocket streaming (simulation → viewer)
+- [ ] Drag-and-drop visual simulation builder
 - [ ] Automatic differentiation for gradient-based optimization
 - [ ] Built-in MCTS/Bayesian optimization
 - [ ] Cloud-scale parallel simulation
-- [ ] Real-time dashboard
 
 ---
 
