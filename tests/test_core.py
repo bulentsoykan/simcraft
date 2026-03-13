@@ -236,13 +236,14 @@ class TestSimulation:
     def test_run_until(self):
         """Test running until specific time."""
         sim = Simulation()
+        sim.schedule(lambda: None, delay=101.0)  # Need at least one event past end time
         sim.run(until=100.0)
         assert sim.now == 100.0
 
     def test_run_for_duration(self):
         """Test running for duration."""
         sim = Simulation()
-        sim.schedule(lambda: None, delay=0)  # Need at least one event
+        sim.schedule(lambda: None, delay=51.0)  # Need at least one event past end time
         sim.run(for_duration=50.0)
         assert sim.now == 50.0
 
